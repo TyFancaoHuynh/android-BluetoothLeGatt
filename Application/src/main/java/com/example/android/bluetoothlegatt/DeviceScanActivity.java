@@ -44,6 +44,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * Activity for scanning and displaying available Bluetooth LE devices.
@@ -379,12 +381,22 @@ public class DeviceScanActivity extends AppCompatActivity {
         }
     }
 
+    private static final Set<String> DEVICE_ADDRESS_FILTER = new LinkedHashSet<>();
+
+    static {
+    }
+
     // Device scan callback.
-    private BluetoothAdapter.LeScanCallback mLeScanCallback =
-            new BluetoothAdapter.LeScanCallback() {
+    private BluetoothAdapter.LeScanCallback mLeScanCallback = new BluetoothAdapter.LeScanCallback() {
 
         @Override
         public void onLeScan(final BluetoothDevice device, int rssi, byte[] scanRecord) {
+
+            String macAddress = device.getAddress();
+            if (DEVICE_ADDRESS_FILTER.size() > 0 && !DEVICE_ADDRESS_FILTER.contains(macAddress)) {
+                return;
+            }
+
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
