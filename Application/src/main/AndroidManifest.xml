@@ -14,9 +14,6 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-
-
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.bluetoothlegatt"
     android:versionCode="1"
@@ -48,5 +45,4 @@
         <activity android:name=".DeviceControlActivity"/>
         <service android:name=".BluetoothLeService" android:enabled="true"/>
     </application>
-
 </manifest>
