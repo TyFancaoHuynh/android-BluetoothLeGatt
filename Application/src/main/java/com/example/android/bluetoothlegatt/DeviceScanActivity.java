@@ -52,10 +52,6 @@ import java.util.Set;
  */
 public class DeviceScanActivity extends AppCompatActivity {
 
-    private static final String PERMISSION_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
-
-    private View mLayout;
-
     // BEGIN copied from ListActivity.java
     protected ListAdapter mAdapter;
     protected ListView mList;
@@ -145,12 +141,14 @@ public class DeviceScanActivity extends AppCompatActivity {
 
     // END copied from ListActivity.java
 
+    private static final String PERMISSION_LOCATION         = Manifest.permission.ACCESS_FINE_LOCATION;
+    private static final int    REQUEST_ENABLE_BT           = 1;
+    private static final int    REQUEST_PERMISSION_LOCATION = 2;
+
+    private View                mLayout;
     private LeDeviceListAdapter mLeDeviceListAdapter;
     private BluetoothAdapter mBluetoothAdapter;
     private boolean mScanning;
-
-    private static final int REQUEST_ENABLE_BT = 1;
-    private static final int REQUEST_PERMISSION_LOCATION = 2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
