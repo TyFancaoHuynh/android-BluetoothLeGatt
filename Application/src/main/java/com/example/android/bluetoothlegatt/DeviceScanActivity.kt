@@ -169,7 +169,6 @@ class DeviceScanActivity : AppCompatActivity() {
         if (enable) {
             if (checkSelfPermission(PERMISSION_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 mLeDeviceListAdapter.clear()
-                mLeDeviceListAdapter.clear()
                 mScanning = mBluetoothAdapter!!.startLeScan(mLeScanCallback)
             } else {
                 if (shouldShowRequestPermissionRationaleCompat(PERMISSION_LOCATION)) {
